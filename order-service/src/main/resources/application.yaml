@@ -1,0 +1,19 @@
+server:
+  port: 7171
+logging:
+  level:
+    root: warn
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.68.114:5432/order_service
+    username: temporal
+    password: temporal
+  jpa:
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: always
+  threads:
+    virtual:
+      enabled: true
