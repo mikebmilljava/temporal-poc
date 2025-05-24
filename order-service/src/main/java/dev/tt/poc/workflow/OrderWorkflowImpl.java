@@ -28,12 +28,15 @@ public class OrderWorkflowImpl implements OrderWorkflow {
             .build();
 
     private final Map<String, ActivityOptions> methodOptions = new HashMap<>() {{
-        //Not sure what to put in the key here, but it seems to work with the value. Use at your own risk.
         put(WorkerHelper.ORDER_LIFECYCLE_WORKFLOW_TASK_QUEUE, ActivityOptions.newBuilder().setHeartbeatTimeout(Duration.ofSeconds(5)).build());
     }};
-    private final OrderActivity orderActivity = Workflow.newActivityStub(OrderActivity.class, defaultActivityOptions, methodOptions);
-    private final ShippingActivity shippingActivity = Workflow.newActivityStub(ShippingActivity.class, defaultActivityOptions, methodOptions);
-    private final PaymentActivity paymentActivity = Workflow.newActivityStub(PaymentActivity.class, defaultActivityOptions, methodOptions);
+    
+    private final OrderActivity orderActivity = 
+    		Workflow.newActivityStub(OrderActivity.class, defaultActivityOptions, methodOptions);
+    private final ShippingActivity shippingActivity = 
+    		Workflow.newActivityStub(ShippingActivity.class, defaultActivityOptions, methodOptions);
+    private final PaymentActivity paymentActivity =
+    		Workflow.newActivityStub(PaymentActivity.class, defaultActivityOptions, methodOptions);
 
 
     @Override

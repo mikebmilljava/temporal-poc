@@ -51,16 +51,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.temporal</groupId>
-			<artifactId>temporal-sdk</artifactId>
-			<version>1.19.1</version>
-		</dependency>
+	
+<dependency>
+    <groupId>io.temporal</groupId>
+    <artifactId>temporal-spring-boot-starter</artifactId>
+    <version>1.29.0</version>
+</dependency>
 	</dependencies>
 
 	<modules>
 		<module>order-service</module>
 		<module>shipping-service</module>
 		<module>payment-service</module>
+		<module>subcription-workflow</module>
 	</modules>
 </project>

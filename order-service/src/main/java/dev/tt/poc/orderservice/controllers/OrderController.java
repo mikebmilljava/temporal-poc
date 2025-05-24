@@ -23,8 +23,8 @@ public class OrderController {
     @PostMapping
     public void createOrder(@RequestBody CreateOrderRequest request) {
     	
-    	ExecutorService executor = Executors.newFixedThreadPool(2);
-    	for (int i = 0; i < 10; i++) {
+    	ExecutorService executor = Executors.newFixedThreadPool(1);
+    	for (int i = 0; i < 1; i++) {
     	    executor.submit(() -> {
     	    	double amount = 100 * request.items().size();
 

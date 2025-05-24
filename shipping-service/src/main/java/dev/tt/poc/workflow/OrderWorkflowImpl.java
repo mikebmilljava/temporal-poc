@@ -6,6 +6,7 @@ import io.temporal.workflow.Workflow;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,10 +32,10 @@ public class OrderWorkflowImpl implements OrderWorkflow {
         //Not sure what to put in the key here, but it seems to work with the value. Use at your own risk.
         put(WorkerHelper.ORDER_LIFECYCLE_WORKFLOW_TASK_QUEUE, ActivityOptions.newBuilder().setHeartbeatTimeout(Duration.ofSeconds(5)).build());
     }};
-    private final OrderActivity orderActivity = Workflow.newActivityStub(OrderActivity.class, defaultActivityOptions, methodOptions);
+    private final OrderActivity orderActivity = Workflow.newActivityStub(OrderActivity.class, defaultActivityOptions,  Collections.singletonMap(WorkerHelper.ORDER_LIFECYCLE_WORKFLOW_TASK_QUEUE, ActivityOptions.newBuilder().setHeartbeatTimeout(Duration.ofSeconds(5)).build()));
     private final ShippingActivity shippingActivity = Workflow.newActivityStub(ShippingActivity.class, defaultActivityOptions, methodOptions);
     private final PaymentActivity paymentActivity = Workflow.newActivityStub(PaymentActivity.class, defaultActivityOptions, methodOptions);
-
+   
 
     @Override
     public void processOrder(String customerId, Map<Long, Integer> orderLines, double amount) {
