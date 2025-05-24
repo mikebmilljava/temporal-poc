@@ -1,4 +1,4 @@
-package com.datmt.temporal.orderservice;
+package dev.tt.poc.orderservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
