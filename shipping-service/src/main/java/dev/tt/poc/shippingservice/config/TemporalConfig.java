@@ -9,7 +9,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import dev.tt.poc.shippingservice.workflow.ShippingActivityImpl;
+import dev.tt.poc.shippingservice.activity.ShippingActivityImpl;
 import dev.tt.poc.workflow.OrderWorkflowImpl;
 import dev.tt.poc.workflow.WorkerHelper;
 

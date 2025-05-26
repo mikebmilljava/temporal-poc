@@ -1,0 +1,31 @@
+server:
+  port: 7171
+logging:
+  level:
+    root: info
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.68.114:5432/order_service
+    username: temporal
+    password: temporal
+  jpa:
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: always
+  threads:
+    virtual:
+      enabled: true
+  temporal:
+    namespace: default
+    connection:
+      target: 127.0.0.1:7233
+    workers:
+      - name: order-service-worker
+        task-queue: order-workflow-taskqueue
+     
+    workersAutoDiscovery:
+      packages:
+        - dev.tt.poc.orderservice.workflow
+        - dev.tt.poc.orderservice.activity

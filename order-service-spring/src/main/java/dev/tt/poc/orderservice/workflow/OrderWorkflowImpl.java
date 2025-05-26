@@ -1,19 +1,20 @@
-package dev.tt.poc.workflow;
-
-import io.temporal.activity.ActivityOptions;
-import io.temporal.common.RetryOptions;
-import io.temporal.workflow.Workflow;
-import lombok.extern.slf4j.Slf4j;
+package dev.tt.poc.orderservice.workflow;
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-import dev.tt.poc.workflow.activities.OrderActivity;
+import dev.tt.poc.orderservice.activity.OrderActivity;
 import dev.tt.poc.workflow.activities.PaymentActivity;
 import dev.tt.poc.workflow.activities.ShippingActivity;
+import io.temporal.activity.ActivityOptions;
+import io.temporal.common.RetryOptions;
+import io.temporal.spring.boot.WorkflowImpl;
+import io.temporal.workflow.Workflow;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@WorkflowImpl(workers = "order-service-worker")
 public class OrderWorkflowImpl implements OrderWorkflow {
 
     private final RetryOptions retryoptions = RetryOptions.newBuilder()
@@ -28,7 +29,7 @@ public class OrderWorkflowImpl implements OrderWorkflow {
             .build();
 
     private final Map<String, ActivityOptions> methodOptions = new HashMap<>() {{
-        put(WorkerHelper.ORDER_LIFECYCLE_WORKFLOW_TASK_QUEUE, ActivityOptions.newBuilder().setHeartbeatTimeout(Duration.ofSeconds(5)).build());
+        put("order-workflow-taskqueue", ActivityOptions.newBuilder().setHeartbeatTimeout(Duration.ofSeconds(5)).build());
     }};
     
     private final OrderActivity orderActivity = 

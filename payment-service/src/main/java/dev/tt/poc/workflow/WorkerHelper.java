@@ -26,8 +26,8 @@ public class WorkerHelper {
 
         builder.setWorkflowId(workflowId);
         builder.setTaskQueue(taskQueue);
-       // builder.setWorkflowRunTimeout(java.time.Duration.ofMinutes(5));
-       // builder.setWorkflowTaskTimeout(java.time.Duration.ofMinutes(1));
+        //builder.setWorkflowRunTimeout(java.time.Duration.ofMinutes(5));
+        //builder.setWorkflowTaskTimeout(java.time.Duration.ofMinutes(1));
         return builder.build();
         // A WorkflowId prevents this it from having duplicate instances, remove it to duplicate.
     }
@@ -35,7 +35,7 @@ public class WorkerHelper {
     public static WorkflowClient getWorkflowClient() {
         WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(WorkflowServiceStubsOptions.newBuilder()
                 .setEnableHttps(false)
-                .setTarget("192.168.100.5:7233")
+                .setTarget("192.168.68.114:7233")
                 .build());
         return WorkflowClient.newInstance(service);
     }

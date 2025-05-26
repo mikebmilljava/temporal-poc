@@ -1,4 +1,4 @@
-package dev.tt.poc.shippingservice.workflow;
+package dev.tt.poc.shippingservice.activity;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,0 +1,27 @@
+server:
+  port: 7272
+logging:
+  level:
+    root: info
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.68.114:5432/payment_service
+    username: temporal
+    password: temporal
+  jpa:
+    hibernate:
+      ddl-auto: update
+  threads:
+    virtual:
+      enabled: true
+  temporal:
+    namespace: default
+    connection:
+      target: 127.0.0.1:7233
+    workers:
+      - name: payment-service-worker
+        task-queue: order-workflow-taskqueue
+    workersAutoDiscovery:
+      packages:
+        - dev.tt.poc.paymentservice.workflow
+        - dev.tt.poc.paymentservice.activity

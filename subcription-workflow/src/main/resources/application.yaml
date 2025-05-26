@@ -1,3 +1,5 @@
+server:
+  port: 7375
 spring:
   application:
     name: email-subscription
@@ -10,5 +12,5 @@ spring:
         task-queue: email_subscription
     workersAutoDiscovery:
       packages:
-        - subscription.workflows
-        - subscription.activities
+        - dev.tt.poc.subscription.workflow
+        - dev.tt.poc.subscription.activity
