@@ -35,6 +35,10 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
@@ -68,6 +72,11 @@
 		<module>order-service</module>
 		<module>shipping-service</module>
 		<module>payment-service</module>
+		<module>order-service-spring</module>
+		<module>shipping-service-spring</module>
+		<module>payment-service-spring</module>
 		<module>subcription-workflow</module>
+		<module>simple-scheduled-task</module>
+		<module>tester</module>
 	</modules>
 </project>

@@ -1,10 +1,9 @@
 package dev.tt.poc.orderservice.workflow;
 
-import io.temporal.workflow.SignalMethod;
+import java.util.Map;
+
 import io.temporal.workflow.WorkflowInterface;
 import io.temporal.workflow.WorkflowMethod;
-
-import java.util.Map;
 
 @WorkflowInterface
 public interface OrderWorkflow {

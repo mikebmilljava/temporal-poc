@@ -8,6 +8,8 @@ spring:
     url: jdbc:postgresql://192.168.68.114:5432/shipping_service
     username: temporal
     password: temporal
+  hikari:
+      maximum-pool-size: 10
   jpa:
     hibernate:
       ddl-auto: update
@@ -17,7 +19,7 @@ spring:
   temporal:
     namespace: default
     connection:
-      target: 127.0.0.1:7233
+      target: 192.168.68.114:7233
     workers:
       - name: shipping-service-worker
         task-queue: order-workflow-taskqueue

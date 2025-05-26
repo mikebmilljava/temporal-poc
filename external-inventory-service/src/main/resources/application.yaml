@@ -1,11 +1,11 @@
 server:
-  port: 7272
+  port: 7373
 logging:
   level:
     root: info
 spring:
   datasource:
-    url: jdbc:postgresql://192.168.68.114:5432/payment_service
+    url: jdbc:postgresql://192.168.68.114:5432/order_service
     username: temporal
     password: temporal
   hikari:
@@ -21,9 +21,14 @@ spring:
     connection:
       target: 192.168.68.114:7233
     workers:
-      - name: payment-service-worker
-        task-queue: order-workflow-taskqueue
+      - name: simple-schedule-worker
+        task-queue: my-task-queue
     workersAutoDiscovery:
       packages:
-        - dev.tt.poc.paymentservice.workflow
-        - dev.tt.poc.paymentservice.activity
+        - dev.tt.poc.simpletask
+  
+  rabbitmq:
+    host: 192.168.68.114
+    port: 5672
+    username: guest
+    password: guest
