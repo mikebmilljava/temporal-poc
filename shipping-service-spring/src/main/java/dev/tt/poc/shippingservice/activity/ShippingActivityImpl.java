@@ -21,7 +21,6 @@ public class ShippingActivityImpl implements ShippingActivity {
 
     @Override
     public void processShipment(Long orderId) {
-    	log.info("Inventory check for order id: {}:", orderId);
     	
     	
         log.info("Shipment processed for order id: {}:", orderId);

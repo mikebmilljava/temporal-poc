@@ -1,5 +1,5 @@
 server:
-  port: 7171
+  port: 7275
 logging:
   level:
     root: info
@@ -13,9 +13,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  sql:
-    init:
-      mode: always
   threads:
     virtual:
       enabled: true
@@ -24,10 +21,13 @@ spring:
     connection:
       target: 192.168.68.114:7233
     workers:
-      - name: order-service-worker
+      - name: inventory-service-worker
         task-queue: order-workflow-taskqueue
-     
     workersAutoDiscovery:
       packages:
-        - dev.tt.poc.orderservice.workflow
-        - dev.tt.poc.orderservice.activity
+        - dev.tt.poc.inventory.activity
+  rabbitmq:
+    host: 192.168.68.114
+    port: 5672
+    username: guest
+    password: guest
