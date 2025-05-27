@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dev.tt.poc.orderservice.activity.OrderActivity;
+import dev.tt.poc.workflow.activities.InventoryActivity;
 import dev.tt.poc.workflow.activities.PaymentActivity;
 import dev.tt.poc.workflow.activities.ShippingActivity;
 import io.temporal.activity.ActivityOptions;
@@ -38,15 +39,21 @@ public class OrderWorkflowImpl implements OrderWorkflow {
     		Workflow.newActivityStub(ShippingActivity.class, defaultActivityOptions, methodOptions);
     private final PaymentActivity paymentActivity =
     		Workflow.newActivityStub(PaymentActivity.class, defaultActivityOptions, methodOptions);
-
+    private final InventoryActivity inventoryActivity = 
+    		Workflow.newActivityStub(InventoryActivity.class, defaultActivityOptions, methodOptions);
 
     @Override
     public void processOrder(String customerId, Map<Long, Integer> orderLines, double amount) {
+    	String workflowId = Workflow.getInfo().getWorkflowId();
+    	
+    	log.info("*****************START*********************");
         log.info("WORKFLOW: Processing order for customer {}", customerId);
         var orderId = orderActivity.placeOrder(customerId, orderLines);
         log.info("WORKFLOW: Order {} placed for customer {}", orderId, customerId);
         paymentActivity.processPayment(orderId, amount);
         log.info("WORKFLOW: Payment processed for order {} of customer {}", orderId, customerId);
+        inventoryActivity.processInventory(workflowId,orderId, amount);
+        log.info("WORKFLOW: Inventory processed for order {} of customer {}", orderId, customerId);
         shippingActivity.processShipment(orderId);
         log.info("WORKFLOW: Order {} shipped for customer {}", orderId, customerId);
 

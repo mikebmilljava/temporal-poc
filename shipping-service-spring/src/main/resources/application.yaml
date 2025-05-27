@@ -1,5 +1,5 @@
 server:
-  port: 7373
+  port: 7374
 logging:
   level:
     root: info
@@ -9,7 +9,7 @@ spring:
     username: temporal
     password: temporal
   hikari:
-      maximum-pool-size: 10
+      maximum-pool-size: 5
   jpa:
     hibernate:
       ddl-auto: update
