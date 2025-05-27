@@ -1,0 +1,16 @@
+server:
+  port: 7375
+spring:
+  application:
+    name: email-subscription
+  temporal:
+    namespace: default
+    connection:
+      target: 192.168.68.114:7233
+    workers:
+      - name: send-email-worker
+        task-queue: email_subscription
+    workersAutoDiscovery:
+      packages:
+        - dev.tt.poc.subscription.workflow
+        - dev.tt.poc.subscription.activities
