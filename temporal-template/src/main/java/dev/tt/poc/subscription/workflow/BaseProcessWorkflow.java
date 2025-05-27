@@ -1,11 +1,13 @@
 package dev.tt.poc.subscription.workflow;
 
-
-import dev.tt.poc.subscription.model.EmailDetails;
-import dev.tt.poc.subscription.model.WorkflowData;
-import io.temporal.workflow.QueryMethod;
-import io.temporal.workflow.WorkflowInterface;
-import io.temporal.workflow.WorkflowMethod;
+import dev.tt.poc.subscription.activities.ProcessActivities;
+import dev.tt.poc.subscription.domain.InternalData;
+import dev.tt.poc.subscription.domain.ThirdPartyData;
+import io.temporal.activity.ActivityOptions;
+import io.temporal.workflow.Workflow;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseProcessWorkflow implements AbstractProcessWorkflow {
     // Activities common to all processes

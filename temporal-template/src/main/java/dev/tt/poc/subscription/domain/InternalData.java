@@ -25,6 +25,14 @@ public final class InternalData implements Serializable {
                 : Collections.unmodifiableMap(b.metadata);
     }
 
+    public InternalData(String dataKey, String dataValue, String requestId) {
+        this.dataKey   = dataKey;
+        this.dataValue = dataValue;
+        this.requestId = requestId;
+        this.receivedAt = Instant.now();
+        this.metadata   = Collections.emptyMap();
+    }
+
     public String getRequestId()   { return requestId; }
     public String getDataKey()     { return dataKey; }
     public String getDataValue()   { return dataValue; }

@@ -77,6 +77,7 @@
 		<module>payment-service-spring</module>
 		<module>subcription-workflow</module>
 		<module>simple-scheduled-task</module>
+		<module>temporal-template</module>
 		<module>tester</module>
 	</modules>
 </project>

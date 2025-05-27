@@ -1,11 +1,12 @@
 package dev.tt.poc.subscription.service;
 
+import dev.tt.poc.subscription.util.WorkflowUtils;
+import dev.tt.poc.subscription.workflow.ProcessAWorkflow;
+import dev.tt.poc.subscription.workflow.ProcessBWorkflow;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
-import com.example.temporaltemplatepoc.workflow.ProcessAWorkflow;
-import com.example.temporaltemplatepoc.workflow.ProcessBWorkflow;
 
 @Service
 public class WorkflowStarterService {
@@ -13,6 +14,7 @@ public class WorkflowStarterService {
     private final WorkflowClient workflowClient;
     private final String taskQueue;
 
+    // defaults to "DEFAULT_TASK_QUEUE" if not set in application properties
     public WorkflowStarterService(WorkflowClient workflowClient,
                                   @Value("${temporal.taskQueue:DEFAULT_TASK_QUEUE}") String taskQueue) {
         this.workflowClient = workflowClient;
@@ -26,7 +28,7 @@ public class WorkflowStarterService {
                 .build();
         ProcessAWorkflow stub = workflowClient.newWorkflowStub(ProcessAWorkflow.class, options);
         // non-blocking start; workflow executes asynchronously
-        WorkflowClient.start(() -> stub.runProcessA(requestId, expectedCount));
+        WorkflowUtils.startWorkflow(() -> stub.run(requestId, expectedCount));
         return stub;
     }
 
@@ -36,7 +38,7 @@ public class WorkflowStarterService {
                 .setWorkflowId(requestId)
                 .build();
         ProcessBWorkflow stub = workflowClient.newWorkflowStub(ProcessBWorkflow.class, options);
-        WorkflowClient.start(() -> stub.runProcessB(requestId, expectedCount));
+        WorkflowUtils.startWorkflow(() -> stub.run(requestId, expectedCount));
         return stub;
     }
 }

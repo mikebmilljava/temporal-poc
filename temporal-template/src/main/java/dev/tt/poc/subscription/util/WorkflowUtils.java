@@ -5,6 +5,8 @@ import io.temporal.client.WorkflowOptions;
 import java.util.Objects;
 import java.util.UUID;
 
+import static io.temporal.client.WorkflowClient.start;
+
 public final class WorkflowUtils {
 
     public static final String DEFAULT_TASK_QUEUE = "TEMPLATE_POC_TASK_QUEUE";
@@ -36,7 +38,7 @@ public final class WorkflowUtils {
 
     public static void startWorkflow(WorkflowStarter starter) {
         Objects.requireNonNull(starter, "starter");
-        WorkflowClient.start(starter::start);
+        start(starter::start);
     }
 
     @FunctionalInterface

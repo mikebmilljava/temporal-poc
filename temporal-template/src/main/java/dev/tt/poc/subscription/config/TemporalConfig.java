@@ -1,29 +1,34 @@
 package dev.tt.poc.subscription.config;
 
-import io.temporal.common.metadata.*;
-import io.temporal.spring.boot.autoconfigure.template.WorkersTemplate;
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
-import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
-import org.springframework.stereotype.Component;
+import dev.tt.poc.subscription.activities.ProcessActivities;
+import dev.tt.poc.subscription.activities.ProcessActivitiesImpl;
+import dev.tt.poc.subscription.workflow.ProcessAWorkflowImpl;
+import dev.tt.poc.subscription.workflow.ProcessBWorkflowImpl;
+import io.temporal.client.WorkflowClient;
+import io.temporal.worker.Worker;
+import io.temporal.worker.WorkerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class TemporalConfig {
     @Bean
-    public WorkerFactory workerFactory(WorkflowClient client) {
+    public WorkerFactory workerFactory(WorkflowClient client,
+                                       ProcessActivities processActivities) {
         WorkerFactory factory = WorkerFactory.newInstance(client);
-        Worker w = factory.newWorker("TASK_QUEUE");
-        // register all workflow subclasses
+        Worker w = factory.newWorker("TEMPLATE_POC_TASK_QUEUE");
         w.registerWorkflowImplementationTypes(
                 ProcessAWorkflowImpl.class,
                 ProcessBWorkflowImpl.class
         );
-        w.registerActivitiesImplementations(processActivitiesBean());
+        // register the activities implementation bean
+        w.registerActivitiesImplementations(processActivities);
         factory.start();
         return factory;
+    }
+
+    @Bean
+    public ProcessActivities processActivitiesBean(ProcessActivitiesImpl impl) {
+        return impl;
     }
 }
