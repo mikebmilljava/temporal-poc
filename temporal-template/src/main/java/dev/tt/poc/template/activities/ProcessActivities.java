@@ -1,7 +1,7 @@
-package dev.tt.poc.subscription.activities;
+package dev.tt.poc.template.activities;
 
-import dev.tt.poc.subscription.domain.InternalData;
-import dev.tt.poc.subscription.domain.ThirdPartyData;
+import dev.tt.poc.template.domain.InternalData;
+import dev.tt.poc.template.domain.ThirdPartyData;
 import io.temporal.activity.ActivityInterface;
 import java.util.List;
 

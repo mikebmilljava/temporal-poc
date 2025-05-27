@@ -1,4 +1,4 @@
-package dev.tt.poc.subscription.util;
+package dev.tt.poc.template.util;
 
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;

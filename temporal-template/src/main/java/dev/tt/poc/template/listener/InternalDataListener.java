@@ -1,8 +1,8 @@
-package dev.tt.poc.subscription.listener;
+package dev.tt.poc.template.listener;
 
-import dev.tt.poc.subscription.domain.InternalData;
-import dev.tt.poc.subscription.dto.InternalDataMessage;
-import dev.tt.poc.subscription.workflow.ProcessAWorkflow;
+import dev.tt.poc.template.domain.InternalData;
+import dev.tt.poc.template.dto.InternalDataMessage;
+import dev.tt.poc.template.workflow.ProcessAWorkflow;
 import io.temporal.client.WorkflowClient;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;

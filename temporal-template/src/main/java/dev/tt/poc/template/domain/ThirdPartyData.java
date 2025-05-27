@@ -1,4 +1,4 @@
-package dev.tt.poc.subscription.domain;
+package dev.tt.poc.template.domain;
 
 import java.io.Serializable;
 import java.time.Instant;

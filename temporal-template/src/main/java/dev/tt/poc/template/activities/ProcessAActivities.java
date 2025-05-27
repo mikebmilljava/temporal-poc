@@ -1,4 +1,4 @@
-package dev.tt.poc.subscription.activities;
+package dev.tt.poc.template.activities;
 
 import io.temporal.activity.ActivityInterface;
 

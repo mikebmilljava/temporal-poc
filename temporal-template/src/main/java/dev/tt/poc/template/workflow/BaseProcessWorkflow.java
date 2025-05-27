@@ -1,8 +1,8 @@
-package dev.tt.poc.subscription.workflow;
+package dev.tt.poc.template.workflow;
 
-import dev.tt.poc.subscription.activities.ProcessActivities;
-import dev.tt.poc.subscription.domain.InternalData;
-import dev.tt.poc.subscription.domain.ThirdPartyData;
+import dev.tt.poc.template.activities.ProcessActivities;
+import dev.tt.poc.template.domain.InternalData;
+import dev.tt.poc.template.domain.ThirdPartyData;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.workflow.Workflow;
 import java.time.Duration;

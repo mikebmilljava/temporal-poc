@@ -1,8 +1,8 @@
-package dev.tt.poc.subscription.service;
+package dev.tt.poc.template.service;
 
-import dev.tt.poc.subscription.util.WorkflowUtils;
-import dev.tt.poc.subscription.workflow.ProcessAWorkflow;
-import dev.tt.poc.subscription.workflow.ProcessBWorkflow;
+import dev.tt.poc.template.util.WorkflowUtils;
+import dev.tt.poc.template.workflow.ProcessAWorkflow;
+import dev.tt.poc.template.workflow.ProcessBWorkflow;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import io.temporal.client.WorkflowClient;

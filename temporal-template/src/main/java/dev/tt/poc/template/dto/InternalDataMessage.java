@@ -1,6 +1,6 @@
-package dev.tt.poc.subscription.dto;
+package dev.tt.poc.template.dto;
 
-import dev.tt.poc.subscription.domain.InternalData;
+import dev.tt.poc.template.domain.InternalData;
 
 public class InternalDataMessage {
 

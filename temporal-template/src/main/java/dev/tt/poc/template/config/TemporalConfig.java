@@ -1,9 +1,9 @@
-package dev.tt.poc.subscription.config;
+package dev.tt.poc.template.config;
 
-import dev.tt.poc.subscription.activities.ProcessActivities;
-import dev.tt.poc.subscription.activities.ProcessActivitiesImpl;
-import dev.tt.poc.subscription.workflow.ProcessAWorkflowImpl;
-import dev.tt.poc.subscription.workflow.ProcessBWorkflowImpl;
+import dev.tt.poc.template.activities.ProcessActivities;
+import dev.tt.poc.template.activities.ProcessActivitiesImpl;
+import dev.tt.poc.template.workflow.ProcessAWorkflowImpl;
+import dev.tt.poc.template.workflow.ProcessBWorkflowImpl;
 import io.temporal.client.WorkflowClient;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;

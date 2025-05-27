@@ -1,8 +1,8 @@
-package dev.tt.poc.subscription.workflow;
+package dev.tt.poc.template.workflow;
 
-import dev.tt.poc.subscription.activities.ProcessAActivities;
-import dev.tt.poc.subscription.domain.InternalData;
-import dev.tt.poc.subscription.domain.ThirdPartyData;
+import dev.tt.poc.template.activities.ProcessAActivities;
+import dev.tt.poc.template.domain.InternalData;
+import dev.tt.poc.template.domain.ThirdPartyData;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowOptions;
 import io.temporal.worker.WorkerFactory;
@@ -31,7 +31,7 @@ class ProcessXWorkflowTest {
     private ProcessAActivities activities;
 
     @Test
-    void processXHappyPath() {
+    void processAHappyPath() {
         // 1) Arrange: mock the 3rd-party fetch
         ThirdPartyData fakeData = ThirdPartyData.builder().requestId("reqX").sourceSystem("sourceSystem").build();
         when(activities.fetchThirdParty("reqX")).thenReturn(fakeData);

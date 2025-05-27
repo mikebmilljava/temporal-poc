@@ -1,4 +1,4 @@
-package dev.tt.poc.subscription.workflow;
+package dev.tt.poc.template.workflow;
 
 public class ProcessBWorkflowImpl extends BaseProcessWorkflow {
     @Override

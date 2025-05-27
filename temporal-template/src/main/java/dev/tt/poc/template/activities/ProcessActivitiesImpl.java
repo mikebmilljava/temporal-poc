@@ -1,7 +1,7 @@
-package dev.tt.poc.subscription.activities;
+package dev.tt.poc.template.activities;
 
-import dev.tt.poc.subscription.domain.InternalData;
-import dev.tt.poc.subscription.domain.ThirdPartyData;
+import dev.tt.poc.template.domain.InternalData;
+import dev.tt.poc.template.domain.ThirdPartyData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
