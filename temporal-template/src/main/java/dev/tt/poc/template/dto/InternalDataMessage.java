@@ -2,6 +2,9 @@ package dev.tt.poc.template.dto;
 
 import dev.tt.poc.template.domain.InternalData;
 
+import java.time.Instant;
+import java.util.Collections;
+
 public class InternalDataMessage {
 
     private String requestId;
@@ -43,7 +46,14 @@ public class InternalDataMessage {
     }
 
     public InternalData toInternalData() {
-        return new InternalData(dataKey, dataValue, requestId);
+
+        return InternalData.builder()
+                .requestId(requestId)
+                .dataKey(dataKey)
+                .dataValue(dataValue)
+                .receivedAt(Instant.now())
+                .metadata(Collections.emptyMap())
+                .build();
     }
 
     @Override

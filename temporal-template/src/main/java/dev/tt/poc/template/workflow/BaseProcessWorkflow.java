@@ -18,7 +18,7 @@ public abstract class BaseProcessWorkflow implements AbstractProcessWorkflow {
                             .build());
 
     // Workflow state
-    private final List<InternalData> internalDatas = new ArrayList<>();
+    protected final List<InternalData> internalDatas = new ArrayList<>();
     private ThirdPartyData tpData;
     private int expectedCount;
 
@@ -38,6 +38,12 @@ public abstract class BaseProcessWorkflow implements AbstractProcessWorkflow {
     @Override
     public final void signalInternalData(String requestId, InternalData data) {
         internalDatas.add(data);
+    }
+
+    @Override
+    public void waitFor(int expectedCount) {
+        // Temporal SDK’s way to block until our condition becomes true
+        Workflow.await(() -> internalDatas.size() >= expectedCount);
     }
 
     protected abstract int defineExpectedCount();

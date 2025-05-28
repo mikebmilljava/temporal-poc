@@ -1,16 +1,17 @@
 package dev.tt.poc.template.config;
 
 import dev.tt.poc.template.activities.ProcessActivities;
-import dev.tt.poc.template.activities.ProcessActivitiesImpl;
 import dev.tt.poc.template.workflow.ProcessAWorkflowImpl;
 import dev.tt.poc.template.workflow.ProcessBWorkflowImpl;
 import io.temporal.client.WorkflowClient;
 import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@ConditionalOnProperty(name="temporal.server.enabled", havingValue="true", matchIfMissing=true)
+@Configuration(proxyBeanMethods = false)
 public class TemporalConfig {
     @Bean
     public WorkerFactory workerFactory(WorkflowClient client,
@@ -25,10 +26,5 @@ public class TemporalConfig {
         w.registerActivitiesImplementations(processActivities);
         factory.start();
         return factory;
-    }
-
-    @Bean
-    public ProcessActivities processActivitiesBean(ProcessActivitiesImpl impl) {
-        return impl;
     }
 }
