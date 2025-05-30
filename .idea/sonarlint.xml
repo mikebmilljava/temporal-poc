@@ -3,6 +3,7 @@
   <component name="SonarLintProjectSettings">
     <option name="moduleMapping">
       <map>
+        <entry key="spring-state-template" value="temporal-template (1)" />
         <entry key="temporal-template" value="tt2" />
       </map>
     </option>

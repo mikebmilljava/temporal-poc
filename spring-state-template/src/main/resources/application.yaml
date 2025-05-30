@@ -1,0 +1,13 @@
+thirdparty:
+  foo:
+    url: http://foo.example.com/data/{requestId}
+  bar:
+    url: http://bar.example.com/data/{requestId}
+
+process:
+  internal:
+    expected: 3
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
