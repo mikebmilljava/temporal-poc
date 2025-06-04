@@ -1,8 +1,8 @@
 thirdparty:
   foo:
-    url: http://foo.example.com/data/{requestId}
+    url: https://httpbin.org/get
   bar:
-    url: http://bar.example.com/data/{requestId}
+    url: https://httpbin.org/get
 
 process:
   internal:
