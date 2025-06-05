@@ -2,10 +2,10 @@ package dev.tt.poc.template.statemachine.machine;
 
 public enum States {
     START,
-    FETCH_THIRD_PARTY,
-    PUBLISH_INTERNAL,
-    WAIT_FOR_INTERNAL,
-    TIMEOUT,
-    COMPLETE,
-    END
+    SERVICE_A_WAIT,
+    SERVICE_B_WAIT,
+    SERVICE_C_WAIT,
+    SERVICE_D_WAIT,
+    SERVICE_E_WAIT,
+    COMPLETE
 }

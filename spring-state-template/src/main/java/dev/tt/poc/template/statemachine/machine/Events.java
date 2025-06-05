@@ -1,9 +1,10 @@
 package dev.tt.poc.template.statemachine.machine;
 
 public enum Events {
-    THIRD_PARTY_FETCHED,
-    INTERNAL_SIGNAL,
-    INTERNAL_COMPLETE,  // when count reached
-    BUSINESS_COMPLETE,
-    INTERNAL_TIMEOUT
+    BEGIN_PROCESS,           // entry into SERVICE_A_WAIT
+    SERVICE_A_REPLY,         // A → B
+    SERVICE_B_REPLY,         // B → C
+    SERVICE_C_REPLY,         // C → D
+    SERVICE_D_REPLY,         // D → E
+    SERVICE_E_REPLY        // E → COMPLETE
 }
